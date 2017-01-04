@@ -1,0 +1,1 @@
+This is a project where tests, related with look & feel and functionality, will be done while The Night Shift Lizards Website is in development.
