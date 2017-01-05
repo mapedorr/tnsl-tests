@@ -26,6 +26,7 @@ body {
   width: 100%;
   position: relative;
   background-color: #DD3333;
+  min-height: 100vh;
 }
 
 ul, ol {
@@ -169,6 +170,94 @@ header
   transform: scaleX(1);
 }
 
+.menu-primary .submenu-background {
+  width:100px;
+  height:100px;
+  position: absolute;
+  background: black;
+  box-shadow: 0 5px 2px rgba(0, 0, 0, .1);
+  transition:all 0.3s, opacity 0.1s, translate 0.2s;
+  transform-origin: 50% 0%;
+  justify-content: center;
+  display: flex;
+  opacity:0;
+  top: calc(100% + .6rem);
+  left: 0;
+}
+
+.menu-primary .submenu-background.open {
+  opacity: 1;
+}
+
+.menu-primary .arrow {
+  position: absolute;
+  width:20px;
+  height:20px;
+  display: block;
+  background:black;
+  transform: translateY(-25%) rotate(45deg);
+  border-radius: 3px;
+}
+
+.menu-primary .submenu {
+  display:  none;
+  left: 0;
+  margin: 0;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  list-style: none;
+  padding-top: .6rem;
+  padding-left: .6rem;
+  overflow: hidden;
+  text-align: left;
+  flex-direction: column;
+}
+
+.menu-primary .submenu.blog {
+  min-width: 200px;
+}
+
+.menu-primary .menu-item.trigger-enter .submenu {
+  display: flex;
+}
+
+.menu-primary .menu-item.trigger-enter-active .submenu {
+  opacity: 1;
+}
+
+.menu-primary .menu-item:hover .submenu {
+  display: block;
+}
+
+.menu-primary .submenu-item {
+  position: relative;
+  white-space: nowrap;
+  padding: .2rem 0;
+  transition: transform .2s;
+  transform: translateX(-100%);
+  will-change: transform;
+}
+
+.menu-primary .menu-item.trigger-enter-active .submenu-item {
+  transform: translateX(0);
+}
+
+.menu-primary .submenu-item:hover {
+  background-color:  black;
+  color: #DD3333;
+}
+
+.menu-primary .submenu-link {
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.menu-primary .menu-item.trigger-enter-active .submenu-link {
+  opacity: 1;
+}
+
 /*
 --------------------------------------------------------------------------------
 content
@@ -179,6 +268,19 @@ content
   margin: 25px auto 30px;
 }
 
+.main-content .site-article-container {
+  position:  relative;
+}
+
+/* .main-content .site-article-background {
+  width: 100%;
+  background-color: #985151;
+  height: 700px;
+  margin-top: -200px;
+  transform: skew(-21deg) rotate(-21deg);
+  box-shadow: 1px 3px 30px rgba(0,0,0,0.4);
+} */
+
 .main-content .site-article {
   margin-top: 15px;
   padding: 10px 20px 30px;
@@ -188,6 +290,19 @@ content
 
 .main-content .site-article:hover {
   background-color: #FFF;
+  box-shadow: 0px 1px 0 #C32D2D,
+    1px 0px 0 #C32D2D,
+    1px 2px 0 #C32D2D,
+    2px 1px 0 #C32D2D,
+    2px 3px 0 #C32D2D,
+    3px 2px 0 #C32D2D,
+    3px 4px 0 #C32D2D,
+    4px 3px 0 #C32D2D,
+    4px 5px 0 #C32D2D,
+    5px 4px 0 #C32D2D,
+    5px 6px 0 #C32D2D,
+    6px 5px 0 #C32D2D,
+    6px 6px 0 #C32D2D;
 }
 
 .main-content .site-article h1 {
@@ -207,4 +322,72 @@ content
 
 .main-content .site-article p {
   margin-top: 10px;
+}
+
+/*
+--------------------------------------------------------------------------------
+footer
+--------------------------------------------------------------------------------
+ */
+.site-footer {
+  position: relative;
+  background-color: #FAFAFA;
+  text-align: center;
+  overflow: auto;
+  box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.site-footer .menu-footer {
+  width: 60%;
+  height: 100%;
+  float: left;
+  max-width: 600px;
+  text-align: justify;
+  list-style: none;
+  display: flex;
+  position: relative;
+  left: 1.5rem;
+}
+
+.site-footer .menu-item {
+  display: inline-block;
+  vertical-align: top;
+  padding: 1rem .5rem;
+  flex: 1;
+  position: relative;
+}
+
+.site-footer .menu-item:hover {
+  cursor: pointer;
+}
+
+.site-footer .menu-item:hover .menu-link {
+  color: #fff;
+}
+
+.site-footer .footer-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #DD3333;
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform .2s cubic-bezier(.165,.84,.44,1),
+    -webkit-transform .2s cubic-bezier(.165,.84,.44,1);
+}
+
+.site-footer .footer-marker.animate-position {
+  transition: transform .1s cubic-bezier(.165,.84,.44,1),
+    -webkit-transform .1s cubic-bezier(.165,.84,.44,1);
+}
+
+.site-footer .menu-item ul {
+  display: block;
+  margin: 10px 0;
+}
+
+.site-footer .footer-logo {
+  float: right;
+  padding-right: 2rem;
 }
